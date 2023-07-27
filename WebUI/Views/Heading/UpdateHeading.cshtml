@@ -1,0 +1,51 @@
+﻿@model WebUI.DAL.Entities.Headings
+
+@{
+    ViewData["Title"] = "UpdateHeading";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>UpdateHeading</h1>
+
+<h4>Headings</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpdateHeading">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="HeadingId" class="control-label"></label>
+                <input asp-for="HeadingId" class="form-control" />
+                <span asp-validation-for="HeadingId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HeadingName" class="control-label"></label>
+                <input asp-for="HeadingName" class="form-control" />
+                <span asp-validation-for="HeadingName" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <div>
+                    <input type="radio"  name="HeadingStatus" value="true" @(Model.HeadingStatus ? "checked" : "")>
+                    <label >True</label>
+                </div>
+                <div>
+                    <input type="radio"  name="HeadingStatus" value="false" @(Model.HeadingStatus ? "" : "checked")>
+                    <label >False</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<WebUI.DAL.Entities.Headings>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Başlıklar</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Yeni Kayıt</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HeadingId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeadingName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeadingStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeadingId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeadingName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeadingStatus)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "UpdateHeading", new { id=item.HeadingId  }, new {@class = "btn btn-warning"}) |
+
+                    @Html.ActionLink("Delete", "DeleteHeading", new { id=item.HeadingId  },new {@class = "btn btn-danger"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
